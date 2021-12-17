@@ -14,3 +14,6 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('pegawai', 'PegawaiController@index');
+Route::get('pegawai/{pegawai}', 'PegawaiController@show');
+Route::get('pegawai/{pegawai}/hitung', 'PegawaiController@hitung');
