@@ -1,7 +1,7 @@
 <table class="table table-striped">
     <thead>
     <tr>
-        <th>No</th>
+        <th>Rank</th>
         <th>Alteratif</th>
         <th>Maximum</th>
         <th>Minimum</th>
@@ -14,9 +14,9 @@
         <tr>
             <td>{{ $index + 1 }}</td>
             <td>{{ $row['alternatif']  }}</td>
-            <td>{{ $row['max']->sum() }}</td>
-            <td>{{ $row['min']->sum() }}</td>
-            <td>{{ $row['yi'] }}</td>
+            <td>{{ number_format($row['max']->sum(), 3) }}</td>
+            <td>{{ number_format($row['min']->sum(), 3) }}</td>
+            <td>{{ number_format($row['yi'], 3) }}</td>
         </tr>
     @endforeach
     </tbody>

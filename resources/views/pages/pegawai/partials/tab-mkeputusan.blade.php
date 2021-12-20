@@ -14,7 +14,7 @@
         <tr>
             <th>A{{ $index + 1 }}</th>
             @foreach($row as $col)
-                <td>{{ $col }}</td>
+                <td>@format_number($col)</td>
             @endforeach
         </tr>
     @endforeach
