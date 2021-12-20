@@ -1,8 +1,8 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito');
-
 // Variables
 @import 'variables';
 
+// DataTables
+@import "~datatables.net-bs4";
+
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import '~admin-lte/build/scss/AdminLTE';

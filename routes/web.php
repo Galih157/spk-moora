@@ -11,9 +11,20 @@
 |
 */
 
+Route::get('/', 'HomeController@index')->name('home');
+Route::get('pegawai', 'PegawaiController@index')->name('pegawai.index');
+Route::get('pegawai/create', 'PegawaiController@create')->name('pegawai.create');
+Route::post('pegawai/create', 'PegawaiController@store')->name('pegawai.create');
+Route::get('pegawai/{pegawai}', 'PegawaiController@show')->name('pegawai.show');
+Route::get('pegawai/{pegawai}/hitung', 'PegawaiController@hitung')->name('pegawai.hitung');
+Route::post('pegawai/{pegawai}/delete', 'PegawaiController@destroy')->name('pegawai.delete');
 Auth::routes();
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('pegawai', 'PegawaiController@index');
-Route::get('pegawai/{pegawai}', 'PegawaiController@show');
-Route::get('pegawai/{pegawai}/hitung', 'PegawaiController@hitung');
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::prefix('ajax')->namespace('Ajax')->name('ajax.')->group(function() {
+    Route::get('pegawai', 'PegawaiController@index')->name('pegawai.index');
+    Route::get('pegawai/{pegawai}', 'PegawaiController@show')->name('pegawai.show');
+    Route::get('pegawai/{pegawai}/hitung', 'PegawaiController@hitung')->name('pegawai.hitung');
+});
+
