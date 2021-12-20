@@ -65,12 +65,45 @@ class PegawaiController extends Controller
             $matriksNormalisasi->push(collect($dataRow));
         }
 
+        $optimasiMatriks = $matriksNormalisasi->map(function ($cols, $rowIndex) use ($dataKriteria) {
+            $cols = $cols->map(function ($col, $colIndex) use ($dataKriteria) {
+                return $col * $dataKriteria[$colIndex]['bobot'];
+            });
+
+            return $cols;
+        });
+
+        $matriksY = collect();
+        $optimasiMatriks->each(function ($cols, $rowIndex) use ($dataKriteria, $matriksY, $asuransi) {
+            $matriksMax = collect();
+            $matriksMin = collect();
+
+            $cols->each(function ($col, $colIndex) use ($dataKriteria, $matriksMax, $matriksMin) {
+                if ($dataKriteria[$colIndex]['type'] == 'benefit') {
+                    return $matriksMax->push($col);
+                }
+
+                return $matriksMin->push($col);
+            });
+
+            $matriksY->push([
+                'alternatif' => $asuransi[$rowIndex]->nama,
+                'max' => $matriksMax,
+                'min' => $matriksMin,
+                'yi' => $matriksMax->sum() - $matriksMin->sum()
+            ]);
+        });
+        $matriksY = $matriksY->sortByDesc('yi');
+
         return view('pages.pegawai.hitung')
             ->with(compact(
                 'pegawai',
                 'matriks',
                 'matriksNormalisasi',
-                'dataKriteria'
+                'optimasiMatriks',
+                'dataKriteria',
+                'matriksY',
+                'asuransi'
             ));
     }
 }
