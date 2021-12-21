@@ -55,7 +55,10 @@
                         data: function (row, index) {
                             let buttons = `<a href="${row.links.show}" class="mr-2 btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i> Edit</a>`;
                             buttons += `<a href="${row.links.hitung}" class="mr-2 btn btn-success btn-sm"><i class="fas fa-calculator"></i> Hitung</a>`;
-                            buttons += `<button data-url="${row.links.delete}" class="mr-2 btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Delete</button>`;
+                            buttons += `<form style="display: inline" method="POST" action="${row.links.delete}">`
+                            buttons += `@csrf`
+                            buttons += `<button type="submit" class="mr-2 btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Delete</button>`;
+                            buttons += `</form>`
 
                             return buttons
                         },

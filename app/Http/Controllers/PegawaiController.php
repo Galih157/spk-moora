@@ -59,4 +59,11 @@ class PegawaiController extends Controller
         return view('pages.pegawai.hitung')
             ->with(['hasil' => $this->hitungService->hitung($pegawai)]);
     }
+
+    public function destroy(Pegawai $pegawai)
+    {
+        $pegawai->delete();
+
+        return redirect()->back();
+    }
 }

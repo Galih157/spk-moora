@@ -56,10 +56,10 @@ class HitungService
             $keuntungan = $item->keuntungan->first();
 
             $this->matriks->push(collect([
-                $keuntungan->premi,
-                $item->proses_pencairan,
-                $keuntungan->jumlah_pencairan,
-                $item->fasilitas,
+                $keuntungan->premi ?? 0,
+                $item->proses_pencairan ?? 0,
+                $keuntungan->jumlah_pencairan ?? 0,
+                $item->fasilitas ?? 0,
             ]));
         }
 

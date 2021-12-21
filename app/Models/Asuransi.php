@@ -12,6 +12,6 @@ class Asuransi extends Model
 
     public function keuntungan()
     {
-        return $this->hasMany(KeuntuganAsuransi::class, 'id_asuransi');
+        return $this->hasMany(KeuntunganAsuransi::class, 'id_asuransi');
     }
 }

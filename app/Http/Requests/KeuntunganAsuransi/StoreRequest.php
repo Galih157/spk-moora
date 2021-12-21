@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Asuransi;
+namespace App\Http\Requests\KeuntunganAsuransi;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -24,9 +24,10 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'nama' => 'required|string|max:255',
-            'fasilitas' => 'required|integer',
-            'proses_pencairan' => 'required|integer',
+            'usia_min' => 'required|numeric',
+            'premi' => 'required|numeric',
+            'jumlah_pencairan' => 'required|numeric',
+            'jenis_kelamin' => 'required|string|in:L,P',
         ];
     }
 }

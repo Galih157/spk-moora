@@ -30,11 +30,19 @@ Route::prefix('asuransi')->name('asuransi.')->group(function () {
     Route::get('', 'AsuransiController@index')->name('index');
     Route::get('create', 'AsuransiController@create')->name('create');
     Route::post('create', 'AsuransiController@store')->name('store');
+    Route::get('{asuransi}', 'AsuransiController@show')->name('show');
+    Route::post('{asuransi}', 'AsuransiController@update')->name('update');
+    Route::post('{asuransi}/delete', 'AsuransiController@destroy')->name('delete');
+    Route::get('{asuransi}/keuntungan', 'KeuntunganAsuransiController@index')->name('keuntungan');
+    Route::get('{asuransi}/keuntungan/create', 'KeuntunganAsuransiController@create')->name('keuntungan.create');
+    Route::post('{asuransi}/keuntungan/create', 'KeuntunganAsuransiController@store')->name('keuntungan.store');
+    Route::get('{asuransi}/keuntungan/{keuntungan}', 'KeuntunganAsuransiController@show')->name('keuntungan.show');
+    Route::post('{asuransi}/keuntungan/{keuntungan}', 'KeuntunganAsuransiController@update')->name('keuntungan.update');
+    Route::post('{asuransi}/keuntungan/{keuntungan}/delete', 'KeuntunganAsuransiController@destroy')->name('keuntungan.delete');
 });
 
 Route::prefix('ajax')->namespace('Ajax')->name('ajax.')->group(function() {
     Route::get('pegawai', 'PegawaiController@index')->name('pegawai.index');
-    Route::get('pegawai/{pegawai}', 'PegawaiController@show')->name('pegawai.show');
-    Route::get('pegawai/{pegawai}/hitung', 'PegawaiController@hitung')->name('pegawai.hitung');
+    Route::get('asuransi', 'AsuransiController@index')->name('asuransi.index');
 });
 

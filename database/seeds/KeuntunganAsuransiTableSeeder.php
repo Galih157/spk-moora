@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\KeuntuganAsuransi;
+use App\Models\KeuntunganAsuransi;
 use Illuminate\Database\Seeder;
 
 class KeuntunganAsuransiTableSeeder extends Seeder
@@ -16,13 +16,13 @@ class KeuntunganAsuransiTableSeeder extends Seeder
             $listKeuntungan = [];
 
             foreach (range(20, 55, 5) as $usia) {
-                $keuntungan = factory(KeuntuganAsuransi::class)->make();
+                $keuntungan = factory(KeuntunganAsuransi::class)->make();
                 $keuntungan->usia_min = $usia;
                 $keuntungan->jenis_kelamin = 'P';
 
                 array_push($listKeuntungan, $keuntungan);
 
-                $keuntungan = factory(KeuntuganAsuransi::class)->make();
+                $keuntungan = factory(KeuntunganAsuransi::class)->make();
                 $keuntungan->usia_min = $usia;
                 $keuntungan->jenis_kelamin = 'L';
 
